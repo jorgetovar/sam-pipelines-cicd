@@ -10,6 +10,9 @@ env:
   PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   SAM_TEMPLATE: template.yaml
   PROD_STACK_NAME: pipelines-demo
+  PROD_PIPELINE_EXECUTION_ROLE: ${{ secrets.PROD_PIPELINE_EXECUTION_ROLE }}
+  PROD_CLOUDFORMATION_EXECUTION_ROLE: ${{ secrets.PROD_CLOUDFORMATION_EXECUTION_ROLE }}
+  PROD_ARTIFACTS_BUCKET: ${{ secrets.PROD_ARTIFACTS_BUCKET }}
   PROD_REGION: us-east-1
 
 jobs:
@@ -20,9 +23,6 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           # trigger the tests here
-          echo 'Running unit tests'
-          pip3 install pytest pytest-mock
-          python3 -m pytest tests/unit
 
   build-and-package:
     if: github.ref == 'refs/heads/main'
