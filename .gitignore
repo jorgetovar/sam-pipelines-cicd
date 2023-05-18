@@ -5,6 +5,7 @@
 # SAM files
 .aws-sam
 samconfig.toml
+.idea
 
 ### Linux ###
 *~
