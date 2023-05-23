@@ -26,6 +26,9 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CommunityTable
 
   CommunityTable:
     Type: "AWS::DynamoDB::Table"
